@@ -2,7 +2,7 @@
 title: "Using Terraform to create an AWS Virtual Private Network"
 date: 2023-05-03T16:47:15-04:00
 categories: ["Notes"]
-tags: ["AWS"]
+tags: ["Terraform"]
 ---
 
 In this article, we'll see how to setup Terraform and deploy a simple AWS network using infrastructure as code (IaC).
@@ -14,9 +14,10 @@ Although it wouldn't take long to deploy this using the AWS console, it quickly 
 We'll be using the us-east-1 region to create a new vpc with 3 public and private subnets across three availability zones. We'll create a public and private route table and a NAT gateway for the public subnet.
 
 ## Terraform Setup
-First we setup a new account in the AWS console with permissions to deploy the infrastructure. Then we'll configure our local environment to run Terraform. 
 
-**AWS Setup**
+First we setup a new account in the AWS console with permissions to deploy the infrastructure. Then we'll configure our local environment to run Terraform.
+
+AWS Setup
 
 Note: This example is not using best security practices because I'm going to immediately delete the infrastructure and associated user account after this lab.
 
@@ -31,13 +32,14 @@ Note: This example is not using best security practices because I'm going to imm
 
 Note: Always protect your key info since this allows access to your AWS account.
 
-**Local Setup**
+Local Setup
 
 My setup
+
 - Windows 11 Pro (22H2)
-- Git Bash https://git-scm.com/download/win
-- Terraform v1.3.7 https://releases.hashicorp.com/terraform/1.3.7/terraform_1.3.7_windows_amd64.zip 
-- VS Code https://code.visualstudio.com/
+- Git Bash <https://git-scm.com/download/win>
+- Terraform v1.3.7 <https://releases.hashicorp.com/terraform/1.3.7/terraform_1.3.7_windows_amd64.zip>
+- VS Code <https://code.visualstudio.com/>
 
 After you download terraform, create a folder on `C:\terraform` to place the unzipped executable.
 
@@ -45,6 +47,7 @@ Update the path on Git Bash by adding this line to your ~/.bashrc file
 `export PATH=$PATH:"/c/terraform/"`
 
 Restart your terminal and verify the command ``terraform -version`` produces the following output:
+
 ```bash
 $ terraform -version
 Terraform v1.3.7
@@ -53,9 +56,9 @@ on windows_amd64
 
 ## Terraform Files
 
-Create a new directory in your users folder (Example: C:\Users\Username\terraform). Open Git Bash and cd into that folder. Create the following files: **main.tf** and **variables.tf**.
+Create a new directory in your users folder (Example: C:\Users\Username\terraform). Open Git Bash and cd into that folder. Create the following files: main.tf and variables.tf.
 
-**Contents of the main.tf file**
+Contents of the main.tf file
 
 ```terraform
 # Configure the AWS Provider
@@ -163,7 +166,7 @@ resource "aws_nat_gateway" "nat_gateway" {
 }
 ```
 
-**Contents of the variables.tf file**
+Contents of the variables.tf file
 
 ```terraform
 variable "aws_region" {
@@ -197,24 +200,28 @@ variable "public_subnets" {
 ## Terraform Deployment
 
 Here you will paste the values you saved earlier into the Git Bash console.
+
 - export AWS_ACCESS_KEY_ID=``"<access key id>"``
 - export AWS_SECRET_ACCESS_KEY=``"<secret access key>"``
 
 Best practice is to always format your terraform files.
+
 - ``terraform fmt``
 
 Next initialize the backend
+
 - ``terraform init``
 
 Next run terraform plan to verify 18 resources will be created:
+
 - ``terraform plan``
 
 To create the infrastructure run terraform apply. You can either type 'yes' when prompted or automatically accept the results by using the -auto-approve flag.
+
 - ``terraform apply``
 
 Once you verified the files have been created by visiting the VPC service in the AWS console, you can delete the resource to avoid billing.
+
 - ``terraform destroy -auto-approve``
 
 Congratulations!
-
-<a href="https://www.udemy.com/course/terraform-hands-on-labs/" target="_blank">If you enjoyed this article please check out the Udemy course from Bryan Krausen and Gabe Maentz: https://www.udemy.com/course/terraform-hands-on-labs/</a>
