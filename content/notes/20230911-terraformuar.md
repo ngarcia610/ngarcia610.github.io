@@ -335,3 +335,17 @@ Cleanup
 - `terraform destroy` terminates and removes all resources
 
 ## Chapter 3 - How to Manage Terraform State
+
+What is Terraform State?
+
+Shared Storage for State Files
+
+Limitations with Terraform's Backends
+
+State File Isolation
+
+Isolation via Workstations
+
+Isolation via File Layout
+
+The terraform_remote_state Data Source
