@@ -4,7 +4,7 @@ description: "Notes from KodeKloud Terraform Associate Course"
 date: 2023-09-10T18:04:05-04:00
 lang: en
 categories: ["Notes"]
-tags: ["DevOps"]
+tags: ["Terraform"]
 draft: True
 ---
 
@@ -95,7 +95,7 @@ They can be set at:
 
 Example required providers block:
 
-```json
+```HCL
 terraform {
   required_providers {
     local = {
@@ -119,7 +119,7 @@ Aliases can be used when you need to differentiate provider blocks.
 
 In this example, there is a second provider block with the alias 'central' to differentiate it.
 
-```json
+```HCL
 provider "aws" {
   region    = "us-east-1"
 }
@@ -134,7 +134,7 @@ provider "aws" {
 
 Variables example:
 
-```json
+```HCL
 # Main.tf
 resource "local_file" "pet" {
   filename = var.filename
@@ -142,7 +142,7 @@ resource "local_file" "pet" {
 }
 ```
 
-```json
+```HCL
 # Variables.tf
 variable "filename" {
   default = "/root/pets.txt"
@@ -183,7 +183,7 @@ Validation rules
 - Specify whether the value must adhere to rules
 - Example:
 
-```json
+```HCL
 # Forces AMI to have 'AMI-'
 
 variable "ami" {
@@ -229,7 +229,7 @@ Items needed to configure S3 as a remote state backend
 
 Example of backend setup:
 
-```json
+```HCL
 # main.tf
 resource "local_file" "item" {
   filename = "/root/item.txt"
@@ -271,7 +271,7 @@ Count and for_each:
 
 Example of for_each:
 
-```json
+```HCL
 # main.tf
 resource "aws_instance" "web" {
   ami = var.ami
@@ -305,7 +305,7 @@ Provisioners
 
 Example of a provisioner
 
-```json
+```HCL
 # main.tf
 resource "aws_instance" "webserver" {
   ami = "ami-1234"
@@ -343,7 +343,7 @@ Consequences of using provisioners:
 
 Terraform Functions
 
-```bash
+```HCL
 # Examples of built in functions
 
 file("/root/terraform-projects/main.tf")
@@ -369,6 +369,8 @@ Lifecycle rules
 - `create_before_destroy = true` the new replacement object is created first, and the prior object is destroyed after the replacement is created
 
 Terraform Taint
+
+- 
 
 ## Terraform Modules
 

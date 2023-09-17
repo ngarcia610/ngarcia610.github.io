@@ -4,7 +4,7 @@ description: "3rd Edition by Yevginiy Brikman, Chapters 1-3"
 date: 2023-09-11T18:04:05-04:00
 lang: en
 categories: ["Notes"]
-tags: ["DevOps"]
+tags: ["Terraform"]
 draft: True
 ---
 
