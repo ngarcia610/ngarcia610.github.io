@@ -1,7 +1,7 @@
 ---
 title: "Using Terraform to create an AWS Virtual Private Network"
 date: 2023-05-03T16:47:15-04:00
-categories: ["Notes"]
+categories: ["How-To"]
 tags: ["Terraform"]
 ---
 
