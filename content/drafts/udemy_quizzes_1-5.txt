@@ -1,0 +1,170 @@
+## 1. IAM & AWS CLI
+
+What is a proper definition of an IAM Role?
+
+- An IAM entity that defines a set of permissions for making requests to AWS services, and will be used by an AWS service.
+
+Which of the following is an IAM Security Tool?
+
+- IAM Credentials Report lists all your AWS Account's IAM Users and the status of their various credentials.
+
+IAM User true statements:
+
+- IAM Users can belong to multiple User Groups
+- IAM Users don't have to belong to a User Group
+- IAM Policies can be attached directly to IAM Users
+- IAM Users access AWS services using their own credentials (username & password or Access Keys).
+
+Which of the following is an IAM best practice?
+
+- Don't use the root user account
+
+What are IAM Policies?
+
+- JSON documents that define a set of permissions for making requests to AWS services, and can be used by IAM users, groups, and roles.
+
+Which principle should you apply regarding IAM Permissions?
+
+- Grant least privilege
+
+What should you do to increase your root account security?
+
+- Enable Multi-Factor Authentication (MFA)
+
+IAM User Groups can contain IAM Users and other User Groups.
+
+- False. IAM User Groups can contain only IAM Users.
+
+An IAM policy consists of one or more statements. A statement in an IAM Policy consists of the following:
+
+- Effect
+- Principal
+- Action
+- Resource
+
+## 2. EC2 Fundamentals Quiz
+
+Which EC2 Purchasing Option can provide you the biggest discount, but it is not suitable for critical jobs or databases?
+
+- Spot Instances
+
+What should you use to control traffic in and out of EC2 instances?
+
+- Security Groups
+
+How long can you reserve an EC2 Reserved Instance?
+
+- 1 or 3 years
+
+You would like to deploy a High-Performance Computing (HPC) application on EC2 instances. Which EC2 instance type should you choose?
+
+- Compute Optimized
+
+Which EC2 Purchasing Option should you use for an application you plan to run on a server continuously for 1 year?
+
+- Reserved Instances
+
+You are preparing to launch an application that will be hosted on a set of EC2 instances. This application needs some software installation and some OS packages need to be updated during the first launch. What is the best way to achieve this when you launch the EC2 instances?
+
+- Write a bash script that installs the required software and updates to your OS, then use this script in EC2 User Data when you launch your EC2 instances.
+
+Which EC2 Instance Type should you choose for a critical application that uses an in-memory database?
+
+- Memory Optimized
+
+You have an e-commerce application with an OLTP database hosted on-premises. This application has popularity which results in its database has thousands of requests per second. You want to migrate the database to an EC2 instance. Which EC2 Instance Type should you choose to handle this high-frequency OLTP database?
+
+- Storage Optimized
+
+Security Groups can be attached to only one EC2 instance.
+
+- False
+
+You're planning to migrate on-premises applications to AWS. Your company has strict compliance requirements that require your applications to run on dedicated servers. You also need to use your own server-bound software license to reduce costs. Which EC2 Purchasing Option is suitable for you?
+
+- Dedicated Hosts
+
+You would like to deploy a database technology on an EC2 instance and the vendor license bills you based on the physical cores and underlying network socket visibility. Which EC2 Purchasing Option allows you to get visibility into them?
+
+- Dedicated Hosts
+
+
+
+## 3. EC2 SAA Level Quiz
+
+You have launched an EC2 instance that will host a NodeJS application. After installing all the required software and configured your application, you noted down the EC2 instance public IPv4 so you can access it. Then, you stopped and then started your EC2 instance to complete the application configuration. After restart, you can't access the EC2 instance, and you found that the EC2 instance public IPv4 has been changed. What should you do to assign a fixed public IPv4 to your EC2 instance?
+
+- Allocate an Elastic IP and assign it to your EC2 instance.
+
+Spot Fleet is a set of Spot Instances and optionally ...
+
+- On-Demand Instances
+
+You have an application performing big data analysis hosted on a fleet of EC2 instances. You want to ensure your EC2 instances have the highest networking performance while communicating with each other. Which EC2 Placement Group should you choose?
+
+- Cluster Placement Group
+
+You have a critical application hosted on a fleet of EC2 instances in which you want to achieve maximum availability when there's an AZ failure. Which EC2 Placement Group should you choose?
+
+- Spread Placement Group
+
+Elastic Network Interface (ENI) can be attached to EC2 instances in another AZ.
+
+- False. ENIs are bounded to a specific AZ.
+
+The following are true regarding EC2 Hibernate, 
+
+- Supports On-Demand and Reserved Instances
+- EC2 Instance RAM must be less than 150 GB
+- EC2 Instance Root Volume type must be an EBS volume
+
+
+
+## 4. EC2 Data Management Quiz
+
+You have just terminated an EC2 instance in us-east-1a, and its attached EBS volume is now available. Your teammate tries to attach it to an EC2 instance in us-east-1b but he can't. What is a possible cause for this?
+
+- EBS volumes are locked to an Availability Zone
+
+You have launched an EC2 instance with two EBS volumes, Root volume type and the other EBS volume type to store the data. A month later you are planning to terminate the EC2 instance. What's the default behavior that will happen to each EBS volume?
+
+- By default, the Root volume type will be deleted as its "Delete On Termination" attribute checked by default.
+- Any other EBS volume types will not be deleted as its "Delete On Termination" attribute disabled by default.
+
+You can use an AMI in N.Virginia Region us-east-1 to launch an EC2 instance in any AWS Region.
+
+- False
+
+Which of the following EBS volume types can be used as boot volumes when you create EC2 instances?
+
+- gp2, gp3, io1, io2
+
+What is EBS Multi-Attach?
+
+- Attach the same EBS volume to multiple EC2 instances in the same AZ
+
+You would like to encrypt an unencrypted EBS volume attached to your EC2 instance. What should you do?
+
+- Create an EBS snapshot of your EBS volume.
+- Copy the snapshot and tick the option to encrypt the copied snapshot.
+- Then, use the encrypted snapshot to create a new EBS volume.
+
+You have a fleet of EC2 instances distributes across AZs that process a large data set. What do you recommend to make the same data to be accessible as an NFS drive to all of your EC2 instances?
+
+- Use EFS
+
+You would like to have a high-performance local cache for your application hosted on an EC2 instance. You don't mind losing the cache upon the termination of your EC2 instance. Which storage mechanism do you recommend as a Solutions Architect?
+
+- Instance Store
+
+You are running a high-performance database that requires an IOPS of 310,000 for its underlying storage. What do you recommend?
+
+- Use an EC2 Instance Store.
+- You can run a database on an EC2 instance that uses an Instance Store, but you'll have a problem that the data will be lost if the EC2 instance is stopped (it can be restarted without problems).
+- One solution is that you can set up a replication mechanism on another EC2 instance with an Instance Store to have a standby copy.
+- Another solution is to set up backup mechanisms for your data.
+- It's all up to you how you want to set up your architecture to validate your requirements.
+- In this use case, it's around IOPS, so we have to choose an EC2 Instance Store.
+
+## 5. High Availability & Scalability Quiz
+

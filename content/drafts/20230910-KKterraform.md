@@ -12,35 +12,32 @@ draft: True
 
 Configuration Management Tools:
 
-- Ansible
-- Puppet
-- Saltstack
 - Features:
   - Designed to install and manage software
   - Maintains standard structure
   - Version control
   - Idempotent
+- Examples: Ansible, Puppet, Saltstack
 
 Server Templating Tools
 
-- Docker
-- Packer
-- Vagrant
 - Features:
   - Pre installed software and dependencies
   - VM or docker images
   - Immutable infrastructure
+- Examples: Docker, Packer, Vagrant
 
 Provisioning Tools
 
-- Terraform
-- Cloudformation
 - Features:
   - Deploy immutable infrastructure resources
   - Servers, db, network components, etc.
   - Multiple providers
+- Examples: Terraform, Cloudformation
 
-Note: Although configuration management tools like ansible can deploy infrastructure, it uses a procedural approach instead of a declarative one. This means that if you have a script that creates 2 vms: Ansible will create 4 if run twice, while Terraform only creates 2.
+Although configuration management tools like ansible can deploy infrastructure, it uses a procedural approach instead of a declarative one.
+
+This means that if you have a script that creates 2 vms: Ansible will create 4 if run twice, while Terraform only creates 2.
 
 Installing Terraform
 
@@ -341,24 +338,53 @@ Consequences of using provisioners:
 - Use of provisioners requires coordinating many more details than Terraform usage usually requires.
 - Terraform cannot model the actions of provisioners as part of a plan.
 
-Terraform Functions
+Built-in Functions
 
-```HCL
-# Examples of built in functions
+- Terraform does not support user defined functions.
+- `file()` can be used to read information from a file
+- `length()` can return the length of variable
+- `toset()` convert a list to a set and removes duplicate values
+- `terraform console` allows you to enter the interactive prompt (allows you to experiment with functions)
+- Common function types:
+  - Numeric: transform and manipulate numbers
+  - String: transform and manipulate strings
+  - Collection: transform and manipulate sets and lists
+  - Type Conversion: change between types
+- Numeric Functions
+  - `max()`
+  - `min()`
+  - `ceil()`
+- String Functions
+  - `split()`
+  - `lower()`
+  - `upper()`
+  - `title()`
+  - `substr()`
+- Collection Functions
+  - `length()`
+  - `index()`
+  - `element()`
+  - `contains()`
+- Map Functions (no longer available)
+  - `keys()`
+  - `values()`
+  - `lookup()`
 
-file("/root/terraform-projects/main.tf")
+Conditional Expressions
 
-length(var.region)
+- Format of a conditional `condition ? true_val : false_val`
+- Example: `length = var.length < 8 ? 8 : var.length`
+  - The condition checks if the variable is less than 8
+  - If true, use '8' as the value of the length argument
+  - Else, make use of the length variable as the value of length
 
-toset(var.region)
-```
+Local Values
 
-Types of functions:
+- 
 
-- Numeric: transform and manipulate numbers, such as max and min
-- String: manipulate text, such as split and join
-- Collection: manipulate set, list, and map; examples are length, index, contains, element
-- Type Conversion
+Dynamic Blocks and Splat Expressions
+
+- 
 
 ## Terraform CLI
 
@@ -370,8 +396,56 @@ Lifecycle rules
 
 Terraform Taint
 
-- 
+- If a resource fails to be created for any reason, it will be marked as tainted.
+- You can taint or untaint resources with the respective command, however these commands are now legacy.
+- Use `terraform apply -replace="<resource_name>"` as of v1.5.x
+
+Debugging
+
+- Set the variable `TF_LOG=<log_value>`
+- There are 5 log values (levels) that can be selected
+- From least to most verbose: Info, Warning, Error, Debug, Trace
+- You can edit the log location with the `TF_LOG_PATH=/tmp/terraform.log` variable
+- Disable logging with `unset TF_LOG_PATH`
+
+Terraform Import
+
+- You can import existing resources into terraform using `terraform import`
+- You need a unique attribute to import (such as instance_id)
+- The syntax is `terraform import <options> <address> <id>`
+- This command only adds the resource to the state file, you must manually add them to the config.
+- `terraform plan` can then be used to refresh the state
+- You can also import local resources using `data sources`
+
+Terraform Workspace
+
+- Create environments without duplicating config files
+- Subcommands include: show, new, list, select, and delete
+- `terraform workspace list` shows existing workspaces
+- '\*' shows the current workspace
+- `terraform workspace new production` creates a new workspace called 'production'
+- This is useful for creating dev and production workspaces.
+- You can edit your variables to have different values for dev and prod:
+
+```HCL
+variable "instance_type" {
+  type = map
+  default = {
+    "development" = "t2.micro"
+    "production" = "m5.large"
+  }
+}
+```
+
+- You can then use the `lookup()` function to return the value based on the workspace.
+- Switch workspaces using `terraform workspace select <workspace_name>`
+- Include the name of the workspace using `${terraform.workspace}`
+- Workspace states are stored in `terraform.tfstate.d`
 
 ## Terraform Modules
 
+- 
+
 ## Terraform Cloud
+
+- 
