@@ -1,6 +1,6 @@
 baseURL: "https://nathangarcia.net/"
 languageCode: en-us
-title: "Nate Garcia's Blog"
+title: "NG"
 paginate: 5
 theme: PaperMod
 
@@ -18,9 +18,9 @@ minify:
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: nathangarcia.net
-  description: "Nate Garcia's Blog"
+  description: "My Cybersecurity Write Ups"
   keywords: [Blog, Portfolio, PaperMod]
-  author: Me
+  author: Nate
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "January 2, 2006"
@@ -28,7 +28,7 @@ params:
   disableThemeToggle: false
 
   ShowReadingTime: true
-  ShowShareButtons: true
+  ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: false
