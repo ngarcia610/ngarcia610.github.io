@@ -8,9 +8,13 @@ tags: [non-fiction]     # TAG names should always be lowercase
 
 ![Book Cover On Tyranny](/assets/img/tyranny.jpg "On Tyranny")
 
-## Background
+## Cover
 
-Since Trump was elected for a second term, dialogue about fascism has increased. This book is frequently cited as one of the best sources for understanding how tyranny comes into power.
+The Founding Fathers tried to protect us from the threat they knew, the tyranny that overcame ancient democracy. Today, our political order faces new threats, not unlike the totalitarianism of the twentieth century. We are no wiser than the Europeans who saw democracy yield to fascism, Nazism, or communism. Our one advantage is that we might learn from their experience. On Tyranny is a call to arms and a guide to resistance, with invaluable ideas for how we can preserve our freedoms in the uncertain years to come.
+
+## Connection
+
+I wanted to learn more about the topic of fascism after the 2024 presidential election.
 
 ## Main Ideas
 
@@ -24,4 +28,11 @@ Ch. 4: Break down social barriers to keep your community alive and healthy. Bein
 
 Ch. 5: Freedom depends on controlling your information, so protect your privacy. The less control you have over your personal details and correspondence, the more personal freedom you're giving up.
 
-Ch. 6: Be on the lookout for the different ways in which tyrannical leaders distort the truth. There are four stages of truth distortion. 1 - Open hostility to verifiable truth and reality. 2 - Repetition of lies. 3 - Contradictions are openly embraced. 4 - Misplaced faith in leaders who self-proclaim themselves as saviors.
+Ch. 6: Be on the lookout for the different ways in which tyrannical leaders distort the truth.
+
+There are four stages of truth distortion:
+
+  1. Open hostility to verifiable truth and reality.
+  2. Repetition of lies.
+  3. Contradictions are openly embraced.
+  4. Misplaced faith in leaders who self-proclaim themselves as saviors.
